@@ -9,6 +9,16 @@ module Enumerable
 
     self
   end
+
+  def my_select
+    results = []
+
+    my_each do |element|
+      results << element if yield(element)
+    end
+
+    results
+  end
 end
 
 # You will first have to define my_each
