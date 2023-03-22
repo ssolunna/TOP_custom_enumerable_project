@@ -1,6 +1,12 @@
 module Enumerable
   def my_each_with_index
-    self.length.times { |index| yield self[index], index }
+    index = 0
+
+    my_each do |element|
+      yield element, index
+      index += 1
+    end
+
     self
   end
 end
@@ -11,8 +17,10 @@ end
 # to this method
 
 class Array
- def my_each
-   self.length.times { |element| yield self[element] }
-   self
- end 
+  def my_each
+    return to_enum(:my_each) unless block_given?
+
+    length.times { |element| yield self[element] }
+    self
+  end
 end
