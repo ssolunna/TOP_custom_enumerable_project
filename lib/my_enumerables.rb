@@ -1,5 +1,8 @@
 module Enumerable
-  # Your code goes here
+  def my_each_with_index
+    self.length.times { |index| yield self[index], index }
+    self
+  end
 end
 
 # You will first have to define my_each
