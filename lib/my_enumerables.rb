@@ -65,6 +65,15 @@ module Enumerable
 
     results
   end
+
+  def my_inject(initial_value)
+    my_each do |element|
+      # (now) initial_value = product of the block
+      initial_value = yield initial_value, element
+    end
+
+    initial_value # Product
+  end
 end
 
 # You will first have to define my_each
